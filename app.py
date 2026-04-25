@@ -1,9 +1,17 @@
 import streamlit as st
 from datetime import date, datetime
 import pandas as pd
-from utils import load_config
+from utils import load_config, using_sheets
 
 st.set_page_config(page_title="Trip Planner", page_icon="✈️", layout="wide")
+
+with st.sidebar:
+    if using_sheets():
+        st.caption("📊 Backend: Google Sheets")
+        if st.button("🔄 Refresh from Sheets"):
+            st.rerun()
+    else:
+        st.caption("💾 Backend: local JSON")
 
 config = load_config()
 trip = config["trip"]

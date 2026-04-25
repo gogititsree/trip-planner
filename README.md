@@ -1,6 +1,6 @@
 # ✈️ Trip Planner
 
-A fully configurable travel planning app built with Python and Streamlit. Plan any trip — flights, day-by-day itinerary, budget tracking, packing checklist — all driven by a single JSON config file.
+A fully configurable travel planning app built with Python and Streamlit. Plan any trip — flights, day-by-day itinerary, budget tracking, packing checklist — all driven by a single config file or Google Sheets.
 
 > Built as a Bali trip planner but reusable for any destination.
 
@@ -13,45 +13,85 @@ A fully configurable travel planning app built with Python and Streamlit. Plan a
 - **Checklist** — packing and documents with categories, checkboxes, and progress bar
 - **Settings** — change trip title, dates, cities, currencies, and exchange rate from the UI
 
-All data persists in `trip_config.json` — no database required.
+Supports two backends:
+- **Local JSON** (`trip_config.json`) — zero setup, works offline
+- **Google Sheets** — private sheet you edit directly; app reads and serves data publicly via Streamlit
 
-## Setup
+## Quick Start (local)
 
 **Requirements:** Python 3.8+
 
 ```bash
-# Clone the repo
 git clone https://github.com/your-username/trip-planner.git
 cd trip-planner
-
-# Install dependencies
 pip install -r requirements.txt
-
-# Run the app
 streamlit run app.py
 ```
 
-The app opens at `http://localhost:8501`.
+## Google Sheets Setup
 
-## Customise for Your Trip
+This gives you a private Google Sheet as the backend. You edit it directly; the public Streamlit app reflects your changes.
 
-Either edit `trip_config.json` directly, or use the **Settings** page in the app to update:
+### 1. Create a Google Cloud service account
 
-- Trip title, origin, destination
-- Departure and return dates
-- Number of travelers
-- Home and local currency codes
-- Exchange rate
+1. Go to [console.cloud.google.com](https://console.cloud.google.com)
+2. Create a project → Enable **Google Sheets API**
+3. Go to **IAM & Admin → Service Accounts** → Create service account
+4. Create a JSON key and download it (e.g. `service_account.json`)
 
-Then fill in your flights, itinerary, budget, and checklist through the UI.
+### 2. Create a Google Sheet and share it with the service account
+
+1. Create a new blank Google Sheet
+2. Copy the Sheet ID from the URL: `https://docs.google.com/spreadsheets/d/SHEET_ID_HERE/edit`
+3. Share the sheet with your service account email (Editor access)
+4. Keep the sheet **private** — the app serves the data, not the sheet itself
+
+### 3. Initialise the sheet
+
+```bash
+python setup_sheets.py --sheet-id YOUR_SHEET_ID --key-file service_account.json
+```
+
+This creates 5 worksheet tabs and populates them with `trip_config.json` data.
+
+### 4. Configure credentials
+
+```bash
+cp .streamlit/secrets.toml.template .streamlit/secrets.toml
+```
+
+Edit `.streamlit/secrets.toml` and fill in your `spreadsheet_id` and service account fields.
+
+### 5. Deploy to Streamlit Cloud
+
+1. Push your code to GitHub (secrets.toml is gitignored — never committed)
+2. Go to [share.streamlit.io](https://share.streamlit.io), connect your repo, set main file to `app.py`
+3. In **App settings → Secrets**, paste the contents of your `secrets.toml`
+4. Deploy
+
+The app will now read from your private Google Sheet and serve the data publicly.
+
+## Sheet Structure
+
+| Tab | Contents |
+|---|---|
+| `trip` | Key-value pairs for trip metadata |
+| `flights` | One row per flight leg |
+| `itinerary` | Flattened activities (day, date, time, activity, cost…) |
+| `budget` | Category, estimated, actual |
+| `checklist` | Category, item, checked |
 
 ## Project Structure
 
 ```
 trip-planner/
-├── app.py                  # Overview page (home)
-├── utils.py                # load_config / save_config helpers
-├── trip_config.json        # All trip data (edit this to customise)
+├── app.py                          # Overview page (home)
+├── utils.py                        # load_config / save_config (auto-detects backend)
+├── sheets_utils.py                 # Google Sheets read/write logic
+├── setup_sheets.py                 # One-time sheet initialisation script
+├── trip_config.json                # Local fallback / initial data
+├── .streamlit/
+│   └── secrets.toml.template       # Credentials template (copy → secrets.toml)
 ├── pages/
 │   ├── 1_Flights.py
 │   ├── 2_Itinerary.py
@@ -65,4 +105,5 @@ trip-planner/
 
 - [Streamlit](https://streamlit.io) — UI framework
 - [Pandas](https://pandas.pydata.org) — data tables and charts
-- Pure Python — no backend, no database
+- [gspread](https://github.com/burnash/gspread) — Google Sheets API client
+- Pure Python — no backend server, no database required
