@@ -2,7 +2,7 @@ import gspread
 from google.oauth2.service_account import Credentials
 
 SCOPES = ["https://www.googleapis.com/auth/spreadsheets"]
-WORKSHEETS = ["trip", "flights", "itinerary", "budget", "checklist"]
+WORKSHEETS = ["trip", "flights", "itinerary", "budget", "checklist", "phrases"]
 
 
 def _get_spreadsheet(service_account_info, spreadsheet_id):
@@ -77,12 +77,19 @@ def load_from_sheets(service_account_info, spreadsheet_id):
             "checked": str(checked_val).upper() in ("TRUE", "1", "YES"),
         })
 
+    # phrases
+    phrases = ss.worksheet("phrases").get_all_records()
+    for p in phrases:
+        for key in ["category", "english", "indonesian", "pronunciation"]:
+            p[key] = str(p.get(key, ""))
+
     return {
         "trip": trip_data,
         "flights": flights,
         "itinerary": itinerary,
         "budget": {"categories": budget_cats},
         "checklist": checklist,
+        "phrases": phrases,
     }
 
 
@@ -129,6 +136,13 @@ def save_to_sheets(config, service_account_info, spreadsheet_id):
         for item in items:
             rows.append([cat, item["item"], item["checked"]])
     ws.update("A1", [["category", "item", "checked"]] + rows)
+
+    # phrases
+    ws = ss.worksheet("phrases")
+    ws.clear()
+    headers = ["category", "english", "indonesian", "pronunciation"]
+    rows = [[p.get(h, "") for h in headers] for p in config.get("phrases", [])]
+    ws.update("A1", [headers] + rows)
 
 
 def setup_sheets(service_account_info, spreadsheet_id, config):
