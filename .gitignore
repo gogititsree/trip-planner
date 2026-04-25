@@ -18,6 +18,10 @@ ENV/
 # Streamlit
 .streamlit/secrets.toml
 
+# Service account keys — never commit these
+service_acct/
+*.json.key
+
 # IDE
 .vscode/
 .idea/
