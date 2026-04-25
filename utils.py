@@ -37,3 +37,8 @@ def save_config(config):
 def using_sheets():
     sa_info, _ = _sheets_credentials()
     return sa_info is not None
+
+
+def currency_symbol(code):
+    symbols = {"INR": "₹", "USD": "$", "EUR": "€", "GBP": "£", "JPY": "¥", "AUD": "A$", "CAD": "C$", "SGD": "S$"}
+    return symbols.get(code, f"{code} ")

@@ -7,7 +7,7 @@ if ROOT not in sys.path:
 
 import streamlit as st
 import pandas as pd
-from utils import load_config, save_config
+from utils import load_config, save_config, currency_symbol
 
 st.set_page_config(page_title="Budget", page_icon="💰", layout="wide")
 st.title("💰 Budget Tracker")
@@ -17,6 +17,7 @@ trip = config["trip"]
 home = trip["currency_home"]
 local = trip["currency_local"]
 rate = float(trip["exchange_rate"])
+sym = currency_symbol(home)
 
 col1, col2 = st.columns([2, 1])
 
@@ -32,8 +33,8 @@ with col1:
         use_container_width=True,
         column_config={
             "name": st.column_config.TextColumn("Category"),
-            "estimated": st.column_config.NumberColumn(f"Estimated ({home})", format="₹%d"),
-            "actual": st.column_config.NumberColumn(f"Spent ({home})", format="₹%d"),
+            "estimated": st.column_config.NumberColumn(f"Estimated ({home})", format="%d"),
+            "actual": st.column_config.NumberColumn(f"Spent ({home})", format="%d"),
         },
         hide_index=True,
     )
@@ -53,9 +54,9 @@ with col1:
     total_act = edited["actual"].fillna(0).sum()
 
     m1, m2, m3 = st.columns(3)
-    m1.metric("Total Estimated", f"₹{total_est:,.0f}")
-    m2.metric("Total Spent", f"₹{total_act:,.0f}")
-    m3.metric("Remaining", f"₹{total_est - total_act:,.0f}")
+    m1.metric("Total Estimated", f"{sym}{total_est:,.0f}")
+    m2.metric("Total Spent", f"{sym}{total_act:,.0f}")
+    m3.metric("Remaining", f"{sym}{total_est - total_act:,.0f}")
 
 with col2:
     st.subheader(f"{home} ↔ {local} Converter")
@@ -66,10 +67,10 @@ with col2:
 
     if f"{home} →" in direction:
         result = amount * rate
-        st.success(f"₹{amount:,.0f}  =  {local} {result:,.0f}")
+        st.success(f"{sym}{amount:,.0f}  =  {local} {result:,.0f}")
     else:
         result = amount / rate
-        st.success(f"{local} {amount:,.0f}  =  ₹{result:,.2f}")
+        st.success(f"{local} {amount:,.0f}  =  {sym}{result:,.2f}")
 
     st.divider()
     st.subheader("Quick Reference")
@@ -83,5 +84,5 @@ with col2:
 st.divider()
 st.subheader("Estimated vs Spent")
 chart_df = edited[["name", "estimated", "actual"]].fillna(0).set_index("name")
-chart_df.columns = [f"Estimated (₹)", f"Spent (₹)"]
+chart_df.columns = [f"Estimated ({home})", f"Spent ({home})"]
 st.bar_chart(chart_df)

@@ -7,13 +7,14 @@ if ROOT not in sys.path:
 
 import streamlit as st
 import pandas as pd
-from utils import load_config, save_config
+from utils import load_config, save_config, currency_symbol
 
 st.set_page_config(page_title="Itinerary", page_icon="🗓️", layout="wide")
 st.title("🗓️ Itinerary")
 
 config = load_config()
 days = config["itinerary"]
+sym = currency_symbol(config["trip"]["currency_home"])
 
 ACTIVITY_COLUMNS = ["time", "title", "description", "cost", "notes"]
 
@@ -71,7 +72,7 @@ else:
                     "time": st.column_config.TextColumn("Time", width="small"),
                     "title": st.column_config.TextColumn("Activity"),
                     "description": st.column_config.TextColumn("Description"),
-                    "cost": st.column_config.NumberColumn("Cost (₹)", format="₹%d", width="small"),
+                    "cost": st.column_config.NumberColumn(f"Cost ({config['trip']['currency_home']})", format="%d", width="small"),
                     "notes": st.column_config.TextColumn("Notes"),
                 },
                 hide_index=True,
@@ -92,4 +93,4 @@ else:
 
             if not edited.empty and "cost" in edited.columns:
                 day_total = edited["cost"].fillna(0).sum()
-                col2.caption(f"Day total: ₹{day_total:,.0f}")
+                col2.caption(f"Day total: {sym}{day_total:,.0f}")

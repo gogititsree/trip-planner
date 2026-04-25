@@ -7,12 +7,13 @@ if ROOT not in sys.path:
 
 import streamlit as st
 import pandas as pd
-from utils import load_config, save_config
+from utils import load_config, save_config, currency_symbol
 
 st.set_page_config(page_title="Flights", page_icon="✈️", layout="wide")
 st.title("✈️ Flights")
 
 config = load_config()
+sym = currency_symbol(config["trip"]["currency_home"])
 
 COLUMNS = ["id", "leg", "airline", "flight_number", "from", "to", "departure", "arrival", "cost", "notes"]
 
@@ -34,7 +35,7 @@ edited = st.data_editor(
         "to": st.column_config.TextColumn("To", width="small"),
         "departure": st.column_config.TextColumn("Departure (YYYY-MM-DD HH:MM)"),
         "arrival": st.column_config.TextColumn("Arrival (YYYY-MM-DD HH:MM)"),
-        "cost": st.column_config.NumberColumn("Cost (₹)", format="₹%d"),
+        "cost": st.column_config.NumberColumn(f"Cost ({config['trip']['currency_home']})", format="%d"),
         "notes": st.column_config.TextColumn("Notes"),
     },
     hide_index=True,
@@ -58,6 +59,6 @@ outbound = df[df["leg"] == "Outbound"]["cost"].sum() if not df.empty else 0
 returning = df[df["leg"] == "Return"]["cost"].sum() if not df.empty else 0
 total = df["cost"].sum() if not df.empty else 0
 
-col1.metric("Outbound Cost", f"₹{outbound:,.0f}")
-col2.metric("Return Cost", f"₹{returning:,.0f}")
-col3.metric("Total Flight Cost", f"₹{total:,.0f}")
+col1.metric("Outbound Cost", f"{sym}{outbound:,.0f}")
+col2.metric("Return Cost", f"{sym}{returning:,.0f}")
+col3.metric("Total Flight Cost", f"{sym}{total:,.0f}")

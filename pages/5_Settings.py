@@ -68,5 +68,9 @@ if submitted:
             "exchange_rate": exchange_rate,
             "notes": notes,
         })
-        save_config(config)
-        st.success("Settings saved! Navigate to any page to see the updates.")
+        try:
+            save_config(config)
+            st.toast("Settings saved!", icon="✅")
+            st.rerun()
+        except Exception as e:
+            st.error(f"Save failed: {e}")

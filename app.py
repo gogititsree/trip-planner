@@ -1,7 +1,7 @@
 import streamlit as st
 from datetime import date, datetime
 import pandas as pd
-from utils import load_config, using_sheets
+from utils import load_config, using_sheets, currency_symbol
 
 st.set_page_config(page_title="Trip Planner", page_icon="✈️", layout="wide")
 
@@ -40,12 +40,14 @@ elif days_left == 0:
 else:
     countdown_label = "Departed"
 
+sym = currency_symbol(trip["currency_home"])
+
 col1.metric("Departure In", countdown_label)
 col2.metric("Trip Duration", f"{duration} nights")
 col3.metric(
-    "Budget (INR)",
-    f"₹{total_est:,}",
-    delta=f"₹{total_act:,} spent" if total_act > 0 else None,
+    f"Budget ({trip['currency_home']})",
+    f"{sym}{total_est:,}",
+    delta=f"{sym}{total_act:,} spent" if total_act > 0 else None,
     delta_color="inverse",
 )
 col4.metric(
@@ -79,8 +81,9 @@ with col2:
     st.subheader("Budget Summary")
     df = pd.DataFrame(config["budget"]["categories"])
     df["remaining"] = df["estimated"] - df["actual"]
-    df.columns = ["Category", "Estimated (₹)", "Spent (₹)", "Remaining (₹)"]
+    c = trip["currency_home"]
+    df.columns = ["Category", f"Estimated ({c})", f"Spent ({c})", f"Remaining ({c})"]
     st.dataframe(df, hide_index=True, use_container_width=True)
-    st.write(f"**Total Estimated:** ₹{total_est:,}")
-    st.write(f"**Total Spent:** ₹{total_act:,}")
-    st.write(f"**Remaining:** ₹{total_est - total_act:,}")
+    st.write(f"**Total Estimated:** {sym}{total_est:,}")
+    st.write(f"**Total Spent:** {sym}{total_act:,}")
+    st.write(f"**Remaining:** {sym}{total_est - total_act:,}")
