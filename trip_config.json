@@ -6,9 +6,9 @@
     "departure_date": "2026-05-15",
     "return_date": "2026-05-21",
     "travelers": 1,
-    "currency_home": "INR",
+    "currency_home": "USD",
     "currency_local": "IDR",
-    "exchange_rate": 180,
+    "exchange_rate": 16300,
     "notes": "6-day trip to Bali from Bangalore via Singapore or KL"
   },
   "flights": [
@@ -21,7 +21,7 @@
       "to": "SIN",
       "departure": "2026-05-15 06:00",
       "arrival": "2026-05-15 12:30",
-      "cost": 18000,
+      "cost": 185,
       "notes": "Layover in Singapore ~2.5 hrs"
     },
     {
@@ -33,7 +33,7 @@
       "to": "DPS",
       "departure": "2026-05-15 15:00",
       "arrival": "2026-05-15 17:30",
-      "cost": 12000,
+      "cost": 130,
       "notes": ""
     },
     {
@@ -45,7 +45,7 @@
       "to": "BLR",
       "departure": "2026-05-21 20:00",
       "arrival": "2026-05-22 01:30",
-      "cost": 14000,
+      "cost": 195,
       "notes": "Via Kuala Lumpur"
     }
   ],
@@ -55,9 +55,10 @@
       "date": "2026-05-15",
       "title": "Arrival & Seminyak",
       "activities": [
-        {"time": "17:30", "title": "Land at DPS", "description": "Clear immigration, pay Visa on Arrival", "cost": 3000, "notes": "USD 35 cash required"},
+        {"time": "17:30", "title": "Land at DPS", "description": "Clear immigration, pay Visa on Arrival", "cost": 35, "notes": "Cash only at the counter"},
+        {"time": "18:30", "title": "Grab to hotel", "description": "Ride to Seminyak hotel", "cost": 8, "notes": ""},
         {"time": "19:00", "title": "Hotel Check-in", "description": "Check into hotel in Seminyak", "cost": 0, "notes": ""},
-        {"time": "20:30", "title": "Dinner", "description": "Local warung or beach club", "cost": 1500, "notes": ""}
+        {"time": "20:30", "title": "Dinner", "description": "Local warung or beach club", "cost": 15, "notes": "Try nasi goreng or mie goreng"}
       ]
     },
     {
@@ -65,12 +66,12 @@
       "date": "2026-05-16",
       "title": "Ubud - Rice Terraces & Monkey Forest",
       "activities": [
-        {"time": "08:00", "title": "Drive to Ubud", "description": "Private driver (~1.5 hrs)", "cost": 1200, "notes": ""},
-        {"time": "10:00", "title": "Tegalalang Rice Terraces", "description": "Walk through iconic terraces", "cost": 300, "notes": "Entry fee"},
-        {"time": "12:30", "title": "Lunch in Ubud", "description": "Warung food", "cost": 500, "notes": ""},
-        {"time": "14:00", "title": "Sacred Monkey Forest", "description": "Explore the monkey sanctuary", "cost": 800, "notes": ""},
-        {"time": "16:00", "title": "Ubud Art Market", "description": "Shopping for souvenirs", "cost": 2000, "notes": "Budget for shopping"},
-        {"time": "19:00", "title": "Dinner & return", "description": "Dinner in Ubud, drive back", "cost": 1000, "notes": ""}
+        {"time": "08:00", "title": "Private driver to Ubud", "description": "Full day driver (~1.5 hrs each way)", "cost": 50, "notes": "Negotiate the night before"},
+        {"time": "10:00", "title": "Tegalalang Rice Terraces", "description": "Walk through iconic terraces", "cost": 2, "notes": "Entry fee + small donation"},
+        {"time": "12:30", "title": "Lunch in Ubud", "description": "Warung food", "cost": 6, "notes": "Try babi guling if available"},
+        {"time": "14:00", "title": "Sacred Monkey Forest", "description": "Explore the monkey sanctuary", "cost": 5, "notes": "Hold onto bags and glasses"},
+        {"time": "16:00", "title": "Ubud Art Market", "description": "Shopping for souvenirs", "cost": 20, "notes": "Bargain — start at 30% of asking price"},
+        {"time": "19:00", "title": "Dinner & return", "description": "Dinner in Ubud, drive back", "cost": 10, "notes": ""}
       ]
     },
     {
@@ -78,11 +79,11 @@
       "date": "2026-05-17",
       "title": "Ubud - Temples & Waterfalls",
       "activities": [
-        {"time": "09:00", "title": "Tirta Empul Temple", "description": "Sacred water purification temple", "cost": 800, "notes": "Sarong required"},
-        {"time": "11:30", "title": "Tegenungan Waterfall", "description": "Swim at the waterfall", "cost": 300, "notes": ""},
-        {"time": "13:00", "title": "Balinese Cooking Class", "description": "Cook & eat local dishes", "cost": 2500, "notes": "Book in advance"},
-        {"time": "18:00", "title": "Campuhan Ridge Walk", "description": "Scenic ridge walk at sunset", "cost": 0, "notes": ""},
-        {"time": "20:00", "title": "Dinner", "description": "Local restaurant", "cost": 800, "notes": ""}
+        {"time": "09:00", "title": "Tirta Empul Temple", "description": "Sacred water purification temple", "cost": 4, "notes": "Sarong required — available at entrance"},
+        {"time": "11:30", "title": "Tegenungan Waterfall", "description": "Swim at the waterfall", "cost": 2, "notes": ""},
+        {"time": "13:00", "title": "Balinese Cooking Class", "description": "Cook & eat local dishes — includes lunch", "cost": 30, "notes": "Book 1-2 days in advance"},
+        {"time": "18:00", "title": "Campuhan Ridge Walk", "description": "Scenic ridge walk at sunset", "cost": 0, "notes": "Free — beautiful golden hour"},
+        {"time": "20:00", "title": "Dinner", "description": "Local restaurant", "cost": 9, "notes": ""}
       ]
     },
     {
@@ -90,11 +91,11 @@
       "date": "2026-05-18",
       "title": "Uluwatu & Kecak Fire Dance",
       "activities": [
-        {"time": "10:00", "title": "Uluwatu Temple", "description": "Clifftop temple with ocean views", "cost": 500, "notes": "Sarong required"},
-        {"time": "12:00", "title": "Padang Padang Beach", "description": "Swim at the famous beach", "cost": 200, "notes": ""},
-        {"time": "14:00", "title": "Lunch at Jimbaran", "description": "Grilled seafood by the beach", "cost": 2000, "notes": ""},
-        {"time": "18:00", "title": "Kecak Fire Dance", "description": "Traditional fire dance at Uluwatu", "cost": 1500, "notes": "Book tickets in advance"},
-        {"time": "20:30", "title": "Night out", "description": "Seminyak beach clubs", "cost": 2000, "notes": ""}
+        {"time": "10:00", "title": "Uluwatu Temple", "description": "Clifftop temple with ocean views", "cost": 4, "notes": "Sarong required"},
+        {"time": "12:00", "title": "Padang Padang Beach", "description": "Swim at the famous beach below cliffs", "cost": 2, "notes": ""},
+        {"time": "14:00", "title": "Seafood lunch at Jimbaran", "description": "Grilled seafood by the beach", "cost": 22, "notes": "Haggle the price before sitting down"},
+        {"time": "18:00", "title": "Kecak Fire Dance", "description": "Traditional fire dance at Uluwatu cliff stage", "cost": 10, "notes": "Book tickets at temple entrance, arrive 30 min early for a good seat"},
+        {"time": "20:30", "title": "Night out at Seminyak", "description": "Beach clubs or bars", "cost": 25, "notes": "Potato Head or Ku De Ta for sunset drinks"}
       ]
     },
     {
@@ -102,13 +103,14 @@
       "date": "2026-05-19",
       "title": "Nusa Penida Day Trip",
       "activities": [
-        {"time": "07:00", "title": "Fast boat to Nusa Penida", "description": "From Sanur harbor, join day tour", "cost": 1500, "notes": "Book as a packaged day tour"},
-        {"time": "09:30", "title": "Kelingking Beach", "description": "Iconic T-rex cliff viewpoint", "cost": 0, "notes": ""},
-        {"time": "11:30", "title": "Angel's Billabong", "description": "Natural infinity pool", "cost": 0, "notes": ""},
-        {"time": "13:00", "title": "Broken Beach", "description": "Natural arch and lagoon", "cost": 0, "notes": ""},
-        {"time": "14:30", "title": "Lunch on the island", "description": "Local warungs", "cost": 600, "notes": ""},
-        {"time": "17:00", "title": "Return boat", "description": "Fast boat back to Sanur", "cost": 0, "notes": "Included in tour"},
-        {"time": "20:00", "title": "Dinner", "description": "Beach club dinner", "cost": 2000, "notes": ""}
+        {"time": "06:30", "title": "Transfer to Sanur harbor", "description": "Grab to Sanur Beach", "cost": 10, "notes": ""},
+        {"time": "07:30", "title": "Fast boat to Nusa Penida", "description": "Join a packaged day tour from Sanur", "cost": 50, "notes": "Includes boat, driver, guide, and key sites"},
+        {"time": "09:30", "title": "Kelingking Beach", "description": "Iconic T-rex cliff viewpoint — hike down is steep", "cost": 0, "notes": "Included in tour"},
+        {"time": "11:30", "title": "Angel's Billabong", "description": "Natural infinity pool in the rocks", "cost": 0, "notes": "Included in tour — check tide times"},
+        {"time": "13:00", "title": "Broken Beach", "description": "Natural rock arch and lagoon", "cost": 0, "notes": "Included in tour"},
+        {"time": "14:30", "title": "Lunch on the island", "description": "Simple local warungs near the sites", "cost": 7, "notes": ""},
+        {"time": "17:00", "title": "Return fast boat", "description": "Boat back to Sanur", "cost": 0, "notes": "Included in tour"},
+        {"time": "20:00", "title": "Dinner at Seminyak", "description": "Celebratory beach club dinner", "cost": 18, "notes": ""}
       ]
     },
     {
@@ -116,23 +118,23 @@
       "date": "2026-05-20",
       "title": "Spa Day & Departure",
       "activities": [
-        {"time": "09:00", "title": "Balinese Spa", "description": "Full body massage and treatment", "cost": 2000, "notes": "Book at hotel or local spa"},
-        {"time": "12:00", "title": "Final lunch & shopping", "description": "Last meal and souvenirs", "cost": 1500, "notes": ""},
+        {"time": "09:00", "title": "Balinese Spa", "description": "Traditional full body massage + scrub", "cost": 28, "notes": "Book at a local spa, not hotel — much cheaper and just as good"},
+        {"time": "12:00", "title": "Final lunch & shopping", "description": "Last meal and souvenir shopping", "cost": 18, "notes": "Seminyak Square for last-minute gifts"},
         {"time": "16:00", "title": "Hotel checkout", "description": "Check out, store luggage if needed", "cost": 0, "notes": ""},
-        {"time": "17:30", "title": "Transfer to DPS airport", "description": "Grab or hotel taxi", "cost": 800, "notes": ""},
-        {"time": "20:00", "title": "Depart DPS", "description": "Board return flight", "cost": 0, "notes": ""}
+        {"time": "17:30", "title": "Transfer to DPS airport", "description": "Grab to Ngurah Rai Airport", "cost": 9, "notes": "Allow 45 min — traffic can be bad"},
+        {"time": "20:00", "title": "Depart DPS", "description": "Board return flight", "cost": 0, "notes": "Arrive 2.5 hrs before — immigration can be slow"}
       ]
     }
   ],
   "budget": {
     "categories": [
-      {"name": "Flights", "estimated": 44000, "actual": 0},
-      {"name": "Accommodation", "estimated": 24000, "actual": 0},
-      {"name": "Food & Dining", "estimated": 9000, "actual": 0},
-      {"name": "Activities & Entry", "estimated": 8000, "actual": 0},
-      {"name": "Local Transport", "estimated": 6000, "actual": 0},
-      {"name": "Shopping & Souvenirs", "estimated": 6000, "actual": 0},
-      {"name": "Visa & Misc", "estimated": 5000, "actual": 0}
+      {"name": "Flights", "estimated": 510, "actual": 0},
+      {"name": "Accommodation", "estimated": 600, "actual": 0},
+      {"name": "Food & Dining", "estimated": 180, "actual": 0},
+      {"name": "Activities & Entry", "estimated": 155, "actual": 0},
+      {"name": "Local Transport", "estimated": 90, "actual": 0},
+      {"name": "Shopping & Souvenirs", "estimated": 80, "actual": 0},
+      {"name": "Visa & Misc", "estimated": 60, "actual": 0}
     ]
   },
   "checklist": {
@@ -169,7 +171,7 @@
     ],
     "Money": [
       {"item": "USD 35 cash for Visa on Arrival", "checked": false},
-      {"item": "IDR cash (exchange at BLR or Seminyak)", "checked": false},
+      {"item": "IDR cash (exchange at BLR airport or Seminyak money changers)", "checked": false},
       {"item": "International debit/credit card", "checked": false},
       {"item": "Notify bank of travel dates", "checked": false}
     ]
