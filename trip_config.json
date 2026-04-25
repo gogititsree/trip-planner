@@ -1,0 +1,177 @@
+{
+  "trip": {
+    "title": "Bali Adventure",
+    "origin": "Bangalore (BLR)",
+    "destination": "Bali (DPS)",
+    "departure_date": "2026-05-15",
+    "return_date": "2026-05-21",
+    "travelers": 1,
+    "currency_home": "INR",
+    "currency_local": "IDR",
+    "exchange_rate": 180,
+    "notes": "6-day trip to Bali from Bangalore via Singapore or KL"
+  },
+  "flights": [
+    {
+      "id": 1,
+      "leg": "Outbound",
+      "airline": "IndiGo",
+      "flight_number": "6E 1234",
+      "from": "BLR",
+      "to": "SIN",
+      "departure": "2026-05-15 06:00",
+      "arrival": "2026-05-15 12:30",
+      "cost": 18000,
+      "notes": "Layover in Singapore ~2.5 hrs"
+    },
+    {
+      "id": 2,
+      "leg": "Outbound",
+      "airline": "Singapore Airlines",
+      "flight_number": "SQ 947",
+      "from": "SIN",
+      "to": "DPS",
+      "departure": "2026-05-15 15:00",
+      "arrival": "2026-05-15 17:30",
+      "cost": 12000,
+      "notes": ""
+    },
+    {
+      "id": 3,
+      "leg": "Return",
+      "airline": "AirAsia",
+      "flight_number": "AK 123",
+      "from": "DPS",
+      "to": "BLR",
+      "departure": "2026-05-21 20:00",
+      "arrival": "2026-05-22 01:30",
+      "cost": 14000,
+      "notes": "Via Kuala Lumpur"
+    }
+  ],
+  "itinerary": [
+    {
+      "day": 1,
+      "date": "2026-05-15",
+      "title": "Arrival & Seminyak",
+      "activities": [
+        {"time": "17:30", "title": "Land at DPS", "description": "Clear immigration, pay Visa on Arrival", "cost": 3000, "notes": "USD 35 cash required"},
+        {"time": "19:00", "title": "Hotel Check-in", "description": "Check into hotel in Seminyak", "cost": 0, "notes": ""},
+        {"time": "20:30", "title": "Dinner", "description": "Local warung or beach club", "cost": 1500, "notes": ""}
+      ]
+    },
+    {
+      "day": 2,
+      "date": "2026-05-16",
+      "title": "Ubud - Rice Terraces & Monkey Forest",
+      "activities": [
+        {"time": "08:00", "title": "Drive to Ubud", "description": "Private driver (~1.5 hrs)", "cost": 1200, "notes": ""},
+        {"time": "10:00", "title": "Tegalalang Rice Terraces", "description": "Walk through iconic terraces", "cost": 300, "notes": "Entry fee"},
+        {"time": "12:30", "title": "Lunch in Ubud", "description": "Warung food", "cost": 500, "notes": ""},
+        {"time": "14:00", "title": "Sacred Monkey Forest", "description": "Explore the monkey sanctuary", "cost": 800, "notes": ""},
+        {"time": "16:00", "title": "Ubud Art Market", "description": "Shopping for souvenirs", "cost": 2000, "notes": "Budget for shopping"},
+        {"time": "19:00", "title": "Dinner & return", "description": "Dinner in Ubud, drive back", "cost": 1000, "notes": ""}
+      ]
+    },
+    {
+      "day": 3,
+      "date": "2026-05-17",
+      "title": "Ubud - Temples & Waterfalls",
+      "activities": [
+        {"time": "09:00", "title": "Tirta Empul Temple", "description": "Sacred water purification temple", "cost": 800, "notes": "Sarong required"},
+        {"time": "11:30", "title": "Tegenungan Waterfall", "description": "Swim at the waterfall", "cost": 300, "notes": ""},
+        {"time": "13:00", "title": "Balinese Cooking Class", "description": "Cook & eat local dishes", "cost": 2500, "notes": "Book in advance"},
+        {"time": "18:00", "title": "Campuhan Ridge Walk", "description": "Scenic ridge walk at sunset", "cost": 0, "notes": ""},
+        {"time": "20:00", "title": "Dinner", "description": "Local restaurant", "cost": 800, "notes": ""}
+      ]
+    },
+    {
+      "day": 4,
+      "date": "2026-05-18",
+      "title": "Uluwatu & Kecak Fire Dance",
+      "activities": [
+        {"time": "10:00", "title": "Uluwatu Temple", "description": "Clifftop temple with ocean views", "cost": 500, "notes": "Sarong required"},
+        {"time": "12:00", "title": "Padang Padang Beach", "description": "Swim at the famous beach", "cost": 200, "notes": ""},
+        {"time": "14:00", "title": "Lunch at Jimbaran", "description": "Grilled seafood by the beach", "cost": 2000, "notes": ""},
+        {"time": "18:00", "title": "Kecak Fire Dance", "description": "Traditional fire dance at Uluwatu", "cost": 1500, "notes": "Book tickets in advance"},
+        {"time": "20:30", "title": "Night out", "description": "Seminyak beach clubs", "cost": 2000, "notes": ""}
+      ]
+    },
+    {
+      "day": 5,
+      "date": "2026-05-19",
+      "title": "Nusa Penida Day Trip",
+      "activities": [
+        {"time": "07:00", "title": "Fast boat to Nusa Penida", "description": "From Sanur harbor, join day tour", "cost": 1500, "notes": "Book as a packaged day tour"},
+        {"time": "09:30", "title": "Kelingking Beach", "description": "Iconic T-rex cliff viewpoint", "cost": 0, "notes": ""},
+        {"time": "11:30", "title": "Angel's Billabong", "description": "Natural infinity pool", "cost": 0, "notes": ""},
+        {"time": "13:00", "title": "Broken Beach", "description": "Natural arch and lagoon", "cost": 0, "notes": ""},
+        {"time": "14:30", "title": "Lunch on the island", "description": "Local warungs", "cost": 600, "notes": ""},
+        {"time": "17:00", "title": "Return boat", "description": "Fast boat back to Sanur", "cost": 0, "notes": "Included in tour"},
+        {"time": "20:00", "title": "Dinner", "description": "Beach club dinner", "cost": 2000, "notes": ""}
+      ]
+    },
+    {
+      "day": 6,
+      "date": "2026-05-20",
+      "title": "Spa Day & Departure",
+      "activities": [
+        {"time": "09:00", "title": "Balinese Spa", "description": "Full body massage and treatment", "cost": 2000, "notes": "Book at hotel or local spa"},
+        {"time": "12:00", "title": "Final lunch & shopping", "description": "Last meal and souvenirs", "cost": 1500, "notes": ""},
+        {"time": "16:00", "title": "Hotel checkout", "description": "Check out, store luggage if needed", "cost": 0, "notes": ""},
+        {"time": "17:30", "title": "Transfer to DPS airport", "description": "Grab or hotel taxi", "cost": 800, "notes": ""},
+        {"time": "20:00", "title": "Depart DPS", "description": "Board return flight", "cost": 0, "notes": ""}
+      ]
+    }
+  ],
+  "budget": {
+    "categories": [
+      {"name": "Flights", "estimated": 44000, "actual": 0},
+      {"name": "Accommodation", "estimated": 24000, "actual": 0},
+      {"name": "Food & Dining", "estimated": 9000, "actual": 0},
+      {"name": "Activities & Entry", "estimated": 8000, "actual": 0},
+      {"name": "Local Transport", "estimated": 6000, "actual": 0},
+      {"name": "Shopping & Souvenirs", "estimated": 6000, "actual": 0},
+      {"name": "Visa & Misc", "estimated": 5000, "actual": 0}
+    ]
+  },
+  "checklist": {
+    "Documents": [
+      {"item": "Passport (min 6 months validity)", "checked": false},
+      {"item": "Visa on Arrival fee - USD 35 cash", "checked": false},
+      {"item": "Travel insurance", "checked": false},
+      {"item": "Hotel booking confirmations (printed/downloaded)", "checked": false},
+      {"item": "Flight tickets (printed/downloaded)", "checked": false},
+      {"item": "Emergency contacts list", "checked": false}
+    ],
+    "Health & Safety": [
+      {"item": "Mosquito repellent (DEET-based)", "checked": false},
+      {"item": "Sunscreen SPF 50+", "checked": false},
+      {"item": "Basic first aid kit", "checked": false},
+      {"item": "Vaccinations checked (Hep A, Typhoid)", "checked": false},
+      {"item": "Prescription medications (if any)", "checked": false},
+      {"item": "Rehydration sachets", "checked": false}
+    ],
+    "Clothing": [
+      {"item": "Light cotton clothing (7 sets)", "checked": false},
+      {"item": "Sarong x2 (mandatory for temple visits)", "checked": false},
+      {"item": "Swimwear (2-3 sets)", "checked": false},
+      {"item": "Comfortable walking shoes", "checked": false},
+      {"item": "Sandals / flip flops", "checked": false},
+      {"item": "Light rain jacket", "checked": false}
+    ],
+    "Electronics": [
+      {"item": "Type C/F power adapter (Indonesia uses Type C)", "checked": false},
+      {"item": "Phone + charger", "checked": false},
+      {"item": "Portable power bank", "checked": false},
+      {"item": "Earphones", "checked": false},
+      {"item": "Camera (optional)", "checked": false}
+    ],
+    "Money": [
+      {"item": "USD 35 cash for Visa on Arrival", "checked": false},
+      {"item": "IDR cash (exchange at BLR or Seminyak)", "checked": false},
+      {"item": "International debit/credit card", "checked": false},
+      {"item": "Notify bank of travel dates", "checked": false}
+    ]
+  }
+}
