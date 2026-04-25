@@ -18,8 +18,12 @@ def _sheets_credentials():
 def load_config():
     sa_info, sheet_id = _sheets_credentials()
     if sa_info:
-        from sheets_utils import load_from_sheets
-        return load_from_sheets(sa_info, sheet_id)
+        try:
+            from sheets_utils import load_from_sheets
+            return load_from_sheets(sa_info, sheet_id)
+        except Exception as e:
+            import streamlit as st
+            st.warning(f"⚠️ Google Sheets unavailable ({e}). Showing local data.")
     with open(CONFIG_PATH, "r") as f:
         return json.load(f)
 
