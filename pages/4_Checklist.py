@@ -7,8 +7,10 @@ if ROOT not in sys.path:
 
 import streamlit as st
 from utils import load_config, save_config
+from style import apply_styles
 
 st.set_page_config(page_title="Checklist", page_icon="✅", layout="wide")
+apply_styles()
 st.title("✅ Packing & Documents Checklist")
 
 config = load_config()

@@ -8,8 +8,10 @@ if ROOT not in sys.path:
 import streamlit as st
 from datetime import datetime
 from utils import load_config, save_config
+from style import apply_styles
 
 st.set_page_config(page_title="Settings", page_icon="⚙️", layout="wide")
+apply_styles()
 st.title("⚙️ Trip Settings")
 st.caption("All changes are written to trip_config.json and reflected across the entire app.")
 

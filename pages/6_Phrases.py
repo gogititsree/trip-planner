@@ -8,8 +8,10 @@ if ROOT not in sys.path:
 import streamlit as st
 import pandas as pd
 from utils import load_config, save_config
+from style import apply_styles
 
 st.set_page_config(page_title="Indonesian Phrases", page_icon="🗣️", layout="wide")
+apply_styles()
 st.title("🗣️ Indonesian Phrases")
 st.caption("Useful phrases for your trip. Search, browse by category, or add your own.")
 

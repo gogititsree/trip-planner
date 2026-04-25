@@ -8,8 +8,10 @@ if ROOT not in sys.path:
 import streamlit as st
 import pandas as pd
 from utils import load_config, save_config, currency_symbol
+from style import apply_styles, section_header
 
 st.set_page_config(page_title="Flights", page_icon="✈️", layout="wide")
+apply_styles()
 st.title("✈️ Flights")
 
 config = load_config()

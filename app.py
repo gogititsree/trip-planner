@@ -2,8 +2,10 @@ import streamlit as st
 from datetime import date, datetime
 import pandas as pd
 from utils import load_config, using_sheets, currency_symbol
+from style import apply_styles, hero, section_header
 
 st.set_page_config(page_title="Trip Planner", page_icon="✈️", layout="wide")
+apply_styles()
 
 with st.sidebar:
     if using_sheets():
@@ -16,10 +18,6 @@ with st.sidebar:
 config = load_config()
 trip = config["trip"]
 
-st.title(f"✈️ {trip['title']}")
-st.caption(f"{trip['origin']}  →  {trip['destination']}")
-st.divider()
-
 departure = datetime.strptime(trip["departure_date"], "%Y-%m-%d").date()
 return_d = datetime.strptime(trip["return_date"], "%Y-%m-%d").date()
 today = date.today()
@@ -30,19 +28,29 @@ total_est = sum(c["estimated"] for c in config["budget"]["categories"])
 total_act = sum(c["actual"] for c in config["budget"]["categories"])
 all_items = [item for cat in config["checklist"].values() for item in cat]
 checked_count = sum(1 for item in all_items if item["checked"])
-
-col1, col2, col3, col4 = st.columns(4)
-
-if days_left > 0:
-    countdown_label = f"{days_left} days"
-elif days_left == 0:
-    countdown_label = "Today!"
-else:
-    countdown_label = "Departed"
-
 sym = currency_symbol(trip["currency_home"])
 
-col1.metric("Departure In", countdown_label)
+if days_left > 0:
+    countdown_label = f"✈️ {days_left} days to go"
+    metric_label = f"{days_left} days"
+elif days_left == 0:
+    countdown_label = "✈️ Departing Today!"
+    metric_label = "Today!"
+else:
+    countdown_label = "🌴 Trip in Progress"
+    metric_label = "Departed"
+
+travelers = int(trip["travelers"])
+hero(
+    title=trip["title"],
+    route=f"{trip['origin']}  →  {trip['destination']}",
+    dates=f"{trip['departure_date']}  –  {trip['return_date']}",
+    badge=countdown_label,
+    badge_note=f"{duration} nights · {travelers} traveler{'s' if travelers != 1 else ''}",
+)
+
+col1, col2, col3, col4 = st.columns(4)
+col1.metric("Departure In", metric_label)
 col2.metric("Trip Duration", f"{duration} nights")
 col3.metric(
     f"Budget ({trip['currency_home']})",
@@ -62,7 +70,7 @@ st.divider()
 col1, col2 = st.columns(2)
 
 with col1:
-    st.subheader("Trip Details")
+    section_header("🗺️", "Trip Details")
     details = {
         "From": trip["origin"],
         "To": trip["destination"],
@@ -78,7 +86,7 @@ with col1:
         st.info(trip["notes"])
 
 with col2:
-    st.subheader("Budget Summary")
+    section_header("💰", "Budget Summary")
     df = pd.DataFrame(config["budget"]["categories"])
     df["remaining"] = df["estimated"] - df["actual"]
     c = trip["currency_home"]
